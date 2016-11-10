@@ -8,3 +8,4 @@ Client file should be modified to contain the attackers IP address and port numb
 
 The Data exfiltration scripts are the same asa the reverse shells except they allow for files to be transferred.  Setup is the same.  To transfer a file you must type **"grab*c:\path\to\the\file"** This will save a copy of the file on the attacking desktop as a ".PNG" file.  Just change he file extension to the real file extension and open the file as normal.
 
+To make your python file into and exe file you must create a folder and place 3 files into the folder.  setup.py, py2exe (executable), script to convert to exe.  With these three files in the folder, make sure you have installed the correct py2exe for the OS and python you are running.  Also edit the setup.py file to contain the script you want to convert to exe and to the name of your py2exe file.
