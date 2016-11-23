@@ -10,7 +10,7 @@ The Data exfiltration scripts are the same asa the reverse shells except they al
 
 To make your python file into and exe file you must create a folder and place 3 files into the folder.  setup.py, py2exe (executable), script to convert to exe.  With these three files in the folder, make sure you have installed the correct py2exe for the OS and python you are running.  Also edit the setup.py file to contain the script you want to convert to exe and to the name of your py2exe file.
 
-File Description:n\
+File Description:cq
 Client Send_Receive_Revere_Shell.py   -    Tcp Reverse shell can send and receive files
 Data Exfiltration Client - TCP Reverse Shell.py   -   TCP Reverse Shell that can ONLY get files from victims machine
 Data Exfiltration Server - TCP Reverse Shell.py   -   TCP Reverse Shell that can ONLY get files from victims machine
