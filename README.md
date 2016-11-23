@@ -10,6 +10,8 @@ The Data exfiltration scripts are the same asa the reverse shells except they al
 
 To make your python file into and exe file you must create a folder and place 3 files into the folder.  setup.py, py2exe (executable), script to convert to exe.  With these three files in the folder, make sure you have installed the correct py2exe for the OS and python you are running.  Also edit the setup.py file to contain the script you want to convert to exe and to the name of your py2exe file.
 
+Started having problems with py2exe. When transferred to machine to test it would ask for python27dll.  No i'm using pyinstaller.  Just need to write pyinstaller --onefile python_script.py  and you have your exe.
+
 **File Description:**
 
 Client Send_Receive_Revere_Shell.py   -    Tcp Reverse shell can send and receive files
